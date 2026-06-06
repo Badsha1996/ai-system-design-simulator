@@ -1,0 +1,13 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/prisma-generated"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  email String @id @unique
+  password String
+}
