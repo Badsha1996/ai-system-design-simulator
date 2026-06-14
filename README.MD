@@ -1,3 +1,8 @@
+# SYSTEM DESIGN AI SIMULATOR 
+```blockquote
+A drag-and-drop system design canvas where you define your architecture, configure traffic/load parameters, and AI simulates failure points, bottlenecks, and gives real architectural recommendations.
+```
+
 # Contribution Guidelines
 
 ## Rules for Contributing
