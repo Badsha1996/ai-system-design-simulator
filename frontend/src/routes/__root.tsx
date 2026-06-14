@@ -5,73 +5,73 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { createServerFn } from '@tanstack/react-start'
-import * as React from 'react'
-import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary.js'
-import { NotFound } from '~/components/NotFound.js'
-import appCss from '~/styles/app.css?url'
-import { seo } from '~/utils/seo.js'
-import { useAppSession } from '~/utils/session.js'
+} from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { createServerFn } from "@tanstack/react-start";
+import * as React from "react";
+import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary.js";
+import { NotFound } from "~/components/NotFound.js";
+import appCss from "~/styles/app.css?url";
+import { seo } from "~/utils/seo.js";
+import { useAppSession } from "~/utils/session.js";
 
-const fetchUser = createServerFn({ method: 'GET' }).handler(async () => {
+const fetchUser = createServerFn({ method: "GET" }).handler(async () => {
   // We need to auth on the server so we have access to secure cookies
-  const session = await useAppSession()
+  const session = await useAppSession();
 
   if (!session.data.userEmail) {
-    return null
+    return null;
   }
 
   return {
     email: session.data.userEmail,
-  }
-})
+  };
+});
 
 export const Route = createRootRoute({
   beforeLoad: async () => {
-    const user = await fetchUser()
+    const user = await fetchUser();
 
     return {
       user,
-    }
+    };
   },
   head: () => ({
     meta: [
       {
-        charSet: 'utf-8',
+        charSet: "utf-8",
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
       },
       ...seo({
         title:
-          'TanStack Start | Type-Safe, Client-First, Full-Stack React Framework',
-        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+          "AI-System-design-simulator | A simulator for designing and testing AI systems with multiple components.",
+        description: `AI-System-design-simulator is a simulator for designing and testing AI systems with multiple components. It allows you to create a system with multiple components, connect them together, and test the system with different inputs.`,
       }),
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
+      { rel: "stylesheet", href: appCss },
       {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: '/apple-touch-icon.png',
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
       },
       {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        href: '/favicon-32x32.png',
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png",
       },
       {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: '/favicon-16x16.png',
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png",
       },
-      { rel: 'manifest', href: '/site.webmanifest', color: '#fffff' },
-      { rel: 'icon', href: '/favicon.ico' },
+      { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
+      { rel: "icon", href: "/favicon.ico" },
     ],
   }),
   errorComponent: (props) => {
@@ -79,22 +79,22 @@ export const Route = createRootRoute({
       <RootDocument>
         <DefaultCatchBoundary {...props} />
       </RootDocument>
-    )
+    );
   },
   notFoundComponent: () => <NotFound />,
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
     <RootDocument>
       <Outlet />
     </RootDocument>
-  )
+  );
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { user } = Route.useRouteContext()
+  const { user } = Route.useRouteContext();
 
   return (
     <html>
@@ -106,16 +106,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <Link
             to="/"
             activeProps={{
-              className: 'font-bold',
+              className: "font-bold",
             }}
             activeOptions={{ exact: true }}
           >
             Home
-          </Link>{' '}
+          </Link>{" "}
           <Link
             to="/posts"
             activeProps={{
-              className: 'font-bold',
+              className: "font-bold",
             }}
           >
             Posts
@@ -133,9 +133,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </div>
         <hr />
         {children}
-        <TanStackRouterDevtools position="bottom-right" />
+        {/* <TanStackRouterDevtools position="bottom-right" /> */}
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
