@@ -40,7 +40,6 @@ export function Canvas(): JSX.Element {
       setEdges((eds) =>
         addEdge(
           {
-            // ensure required fields exist on the created edge
             ...params,
             id:
               params.id ?? `e-${params.source}-${params.target}-${Date.now()}`,
