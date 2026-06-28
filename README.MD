@@ -12,7 +12,7 @@ A drag-and-drop system design canvas where you define your architecture, configu
 * Avoid unnecessary abstractions, boilerplate, and "AI slop."
 * Do not add comments that explain obvious code. Write code that is clear enough to be understood without excessive comments.
 * Keep pull requests focused and small. A single PR must not exceed **500 lines of changes**.
-* Update the relevant **Frontend README** and **Backend README** whenever your changes introduce new functionality, setup steps, configuration, APIs, or workflows.
+* Update the relevant **App README** whenever your changes introduce new functionality, setup steps, configuration, APIs, or workflows.
 
 ## What Is Good Code?
 
